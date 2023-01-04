@@ -24,7 +24,7 @@ downloadproxy() {
     pid=$!
     spin "Download proxy_config.py${whiteColor}" "0" "Menu" "UIMenu"
     run_Program() {
-        busybox sed -i "s/REMOTE_HOST = \"localhost\"/REMOTE_HOST = \"sg.genshin.ps.yuuki.me\"/g" proxy_config.py &>$HOME/zerr.log
+        busybox sed -i "s/REMOTE_HOST = \"localhost\"/REMOTE_HOST = \"101.128.92.232\"/g" proxy_config.py &>$HOME/zerr.log
         errCode=$?
         log "$errCode"
         sleep 1s
