@@ -1,0 +1,50 @@
+binary=/data/data/com.termux/files/usr/bin/zex
+versionBashIn1="4.0.1"
+updateNotif="1. Add ScorePS Server"
+updateNote="There is new version to"
+link=null
+printLatest="This is Latest Version (Ver : $versionBashIn1)"
+whatTheFuckEditVersion="Something wrong with version.\nThis version different from the server\n\nServer Latest Version : $versionBashIn1\nVersion Script : $versionBash1\n\nversion too latest from server"
+updateScript1() {
+    cd $HOME || exit 1
+    if [ -f "$PREFIX/bin/zex" ]; then
+        rm $PREFIX/bin/zex
+    fi
+
+    if [ ! -d ".ElaXan" ]; then
+        mkdir .ElaXan
+    fi
+
+    folderName="$HOME/.ElaXan/AnimeGamePatch"
+    if [ -d "$folderName" ]; then
+        rm -rf "$folderName"
+    fi
+    if ! command -v git &> /dev/null; then
+        pkg install git -y
+    fi
+    clear
+    echo "Download Script..."
+    sleep 1s
+    if [ -d "AnimeGamePatch" ]; then
+        rm -rf AnimeGamePatch
+    fi
+    git clone https://github.com/Score-Inc/AnimeGamePatch.git
+    if [[ $? != 0 ]]; then
+        echo "Install Failed!"
+        exit 1
+    fi
+    clear
+    mv $HOME/AnimeGamePatch $folderName
+    ln -sv $folderName/zex.sh $PREFIX/bin/zex
+    chmod +x $PREFIX/bin/zex
+    rm $HOME/.termux/settings.zex
+    sleep 1s
+    if [ -f "$PREFIX/bin/zex" ]; then
+        echo "Install Success!!"
+        echo "now enter command : zex"
+        exit
+    else
+        echo "Install Failed!"
+        exit
+    fi
+}
