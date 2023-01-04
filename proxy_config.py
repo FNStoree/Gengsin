@@ -1,7 +1,7 @@
 import os
 
 # This can also be replaced with another IP address.
-USE_SSL = True
+USE_SSL = False
 REMOTE_HOST = "101.128.92.232"
 REMOTE_PORT = 8085
 
